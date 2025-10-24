@@ -39,8 +39,9 @@ jobs:
 
       - name: Setup kubectl
         run: |
+          mkdir -p $HOME/.kube
           echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
-      
+
       - name: Deploy to Kubernetes
         run: |
           kubectl set image deployment/flask-deployment flask-container=esyasoftshubham/mydockerimage:${{ github.sha }} --record
