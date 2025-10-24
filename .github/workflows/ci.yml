@@ -36,3 +36,16 @@ jobs:
           git add deployment.yaml
           git commit -m "Update deployment image to ${{ github.sha }}" || echo "No changes to commit"
           git push || echo "Push failed (likely no changes)"
+
+      - name: Setup kubectl
+        run: |
+          echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
+      
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/flask-deployment flask-container=esyasoftshubham/mydockerimage:${{ github.sha }} --record
+          kubectl rollout status deployment/flask-deployment
+      
+      - name: Verify deployment
+        run: kubectl get pods -o wide
+
