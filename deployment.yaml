@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-container
-        image: esyasoftshubham/mydockerimage:fefa502a0a1372470e209aebcbe4f495113fe980
+        image: esyasoftshubham/mydockerimage:e72150b9b1078508539bd1f6d5b81fa8e7293221
         ports:
         - containerPort: 3000
       restartPolicy: Always
