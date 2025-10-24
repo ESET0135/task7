@@ -48,7 +48,7 @@ jobs:
           mkdir -p $HOME/.kube
           echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
 
-      # Step 7: ploy to Kubernetes
+      # Step 7: ploy to Kernetes
       - name: Deploy to Kubernetes
         run: |
           kubectl set image deployment/flask-deployment flask-container=esyasoftshubham/mydockerimage:${{ github.sha }} --record
