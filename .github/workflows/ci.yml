@@ -1,4 +1,4 @@
-name: CI/CD Docker Workflow
+name: CI/CD Docker- Workflow
 
 permissions:
   contents: write
@@ -45,7 +45,7 @@ jobs:
       # Step 6: Setup kubectl with kubeconfig
       - name: Setup kubectl
         run: |
-          mkdir -p $HOME/.kube
+          mkdir -p /.kube
           echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
 
       # Step 7: Deploy to Kubernetes
